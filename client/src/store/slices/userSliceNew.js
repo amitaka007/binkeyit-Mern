@@ -36,7 +36,7 @@ const userSliceNew = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(userLogin.pending, (state, action) => {
+      .addCase(userLogin.pending, (state) => {
         state.userDetails = null;
       })
       .addCase(userLogin.fulfilled, (state, action) => {
@@ -51,10 +51,10 @@ const userSliceNew = createSlice({
         state.userDetails = null;
         console.log("!!!! LOGIN ERROR: ", action.payload);
       })
-      .addCase(userlogout.fulfilled, (state, action) => {
+      .addCase(userlogout.fulfilled, (state) => {
         console.log("^^^^ LOGOUT via THUNK");
-        state = Object.assign(state, initialState);
-        toast.success("Logged out successfully.");
+        Object.assign(state, initialState);
+        // toast.success("Logged out successfully.");
       });
   },
 });

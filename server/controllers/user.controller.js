@@ -189,8 +189,9 @@ export async function loginController(req, res) {
     // set token in cookies
     const cookieOption = {
       httpOnly: true,
-      secure: true,
+      secure: true, //ensures that the cookies are only sent over HTTPS (and not over HTTP). If you're testing in a local development environment that doesn't use HTTPS, this might prevent the cookies from being set or cleared properly.
       sameSite: "None",
+      path: "/", // Add this to match the cookie path
     };
 
     // set token in cookies
@@ -234,6 +235,7 @@ export async function logoutController(req, res) {
     }
     res.clearCookie("accessToken", cookiesOption);
     res.clearCookie("refreshToken", cookiesOption);
+
 
     // remove the refresh token from database
     const removeRefreshTokenUser = await UserModel.findByIdAndUpdate(userid, {
