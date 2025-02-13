@@ -6,8 +6,8 @@ import toast from "react-hot-toast";
 import SummaryApi from "../common/api/SummaryApi";
 import Axios from "../utils/axios";
 import AxiosToastError from "../utils/AxiosToastError";
-import { setUserDetails } from "../store/slices/userSlice";
 import fetchUserDetails from "../utils/fetchUserDetails";
+import { setUserDetails } from "../store/slices/authSlice";
 
 const Profile = () => {
   const user = useSelector((state) => state.user);

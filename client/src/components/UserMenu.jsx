@@ -2,15 +2,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Divider from "./Divider";
-import Axios from "../utils/axios";
-import SummaryApi from "../common/api/SummaryApi";
-import { logout } from "../store/slices/userSlice";
+// import Axios from "../utils/axios";
+// import SummaryApi from "../common/api/SummaryApi";
+// import { logout } from "../store/slices/userSlice";
 import AxiosToastError from "../utils/AxiosToastError";
 import { HiExternalLink } from "react-icons/hi";
-import { userlogout } from "../store/thunk/auth/auththunk";
+import { userlogout } from "../store/thunk/auth/authThunk";
 
 const UserMenu = ({ close }) => {
-  const user = useSelector((state) => state?.user?.userDetails);
+  const user = useSelector((state) => state?.authSlice?.userDetails);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ const UserMenu = ({ close }) => {
       //   navigate("/");
       // }
 
-      const response = await dispatch(userlogout());
+       await dispatch(userlogout());
       
 
       navigate("/");

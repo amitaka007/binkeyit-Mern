@@ -14,7 +14,7 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [openUserMenu, setOpenUserMenu] = useState(false);
-  const user = useSelector((state) => state?.user?.userDetails);
+  const user = useSelector((state) => state?.authSlice?.userDetails);
 
   const isSearchpage = () => {
     return location.pathname === "/search";

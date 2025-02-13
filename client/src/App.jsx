@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import { useEffect } from "react";
 import fetchUserDetails from "./utils/fetchUserDetails";
 import { useDispatch } from "react-redux";
-import { setUserDetails } from "./store/slices/userSlice";
+import { setUserDetails } from "./store/slices/authSlice";
 
 function App() {
   const dispatch = useDispatch();

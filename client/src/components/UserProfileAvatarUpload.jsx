@@ -6,8 +6,8 @@ import Axios from "../utils/axios";
 import SummaryApi from "../common/api/SummaryApi";
 import AxiosToastError from "../utils/AxiosToastError";
 import toast from "react-hot-toast";
-import { updatedAvatar } from "../store/slices/userSlice";
 import { IoClose } from "react-icons/io5";
+import { updatedAvatar } from "../store/slices/authSlice";
 
 const UserProfileAvatarUpload = ({ close }) => {
   const dispatch = useDispatch();

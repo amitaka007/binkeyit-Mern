@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import toast from "react-hot-toast";
 import AxiosToastError from "../utils/AxiosToastError";
 import { useNavigate, Link } from "react-router-dom";
 import fetchUserDetails from "../utils/fetchUserDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { LoginFormSchema } from "../utils/FormSchema";
-import { userLogin } from "../store/thunk/auth/auththunk";
-import { setUserDetails } from "../store/slices/userSlice";
+import { userLogin } from "../store/thunk/auth/authThunk";
+import { setUserDetails } from "../store/slices/authSlice";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
-  const user = useSelector((state) => state?.user?.userDetails);
+  const user = useSelector((state) => state?.authSlice?.userDetails);
 
   const formInitialValues = {
     email: "",
