@@ -5,10 +5,10 @@ import AxiosToastError from "../utils/AxiosToastError";
 import { useNavigate, Link } from "react-router-dom";
 import fetchUserDetails from "../utils/fetchUserDetails";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserDetails } from "../store/slices/userSliceNew";
 import { useFormik } from "formik";
 import { LoginFormSchema } from "../utils/FormSchema";
-import { userLogin } from "../store/thunk/user";
+import { userLogin } from "../store/thunk/auth/auththunk";
+import { setUserDetails } from "../store/slices/userSlice";
 
 const Login = () => {
   const navigate = useNavigate();

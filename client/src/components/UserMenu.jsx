@@ -7,7 +7,7 @@ import SummaryApi from "../common/api/SummaryApi";
 import { logout } from "../store/slices/userSlice";
 import AxiosToastError from "../utils/AxiosToastError";
 import { HiExternalLink } from "react-icons/hi";
-import { userlogout } from "../store/thunk/user";
+import { userlogout } from "../store/thunk/auth/auththunk";
 
 const UserMenu = ({ close }) => {
   const user = useSelector((state) => state?.user?.userDetails);
