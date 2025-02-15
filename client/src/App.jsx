@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import fetchUserDetails from "./utils/fetchUserDetails";
 import { useDispatch } from "react-redux";
 import { setUserDetails } from "./store/slices/authSlice";
+import { setLoadingCategory } from "./store/slices/categoriesSlice";
+import { fetchAllCategory } from "./store/thunk/categories/categoriesApi";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,9 +19,21 @@ function App() {
     dispatch(setUserDetails(userData.data.data));
   };
 
+  const fetchCategory = async () => {
+    try {
+      dispatch(setLoadingCategory(true));
+      await dispatch(fetchAllCategory());
+    } catch (err) {
+      console.log(err);
+    } finally {
+      dispatch(setLoadingCategory(false));
+    }
+  };
+
   useEffect(() => {
     // Fetch user details on app load or when the user's details change
     fetchUser();
+    fetchCategory();
   }, []);
 
   return (

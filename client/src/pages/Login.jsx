@@ -6,7 +6,7 @@ import fetchUserDetails from "../utils/fetchUserDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { LoginFormSchema } from "../utils/FormSchema";
-import { userLogin } from "../store/thunk/auth/authThunk";
+import { loginAsync } from "../store/thunk/auth/authThunk";
 import { setUserDetails } from "../store/slices/authSlice";
 
 const Login = () => {
@@ -26,7 +26,7 @@ const Login = () => {
       validationSchema: LoginFormSchema,
       onSubmit: async (values) => {
         try {
-          const response = await dispatch(userLogin(values));
+          const response = await dispatch(loginAsync(values));
 
           if (response?.payload) {
             const userDetails = await fetchUserDetails();
@@ -77,7 +77,7 @@ const Login = () => {
               <div className="bg-blue-50 p-2 border focus-within:border-primary-200 rounded flex justify-between items-center">
                 <input
                   type={showPassword ? "text" : "password"}
-                  className="w-full"
+                  className="w-full outline-none bg-transparent"
                   value={values.password}
                   name="password"
                   onChange={handleChange}

@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import toast from "react-hot-toast";
-import Axios from "../utils/axios";
-import SummaryApi from "../common/api/SummaryApi";
 import AxiosToastError from "../utils/AxiosToastError";
 import { useNavigate, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { registerAsync } from "../store/thunk/auth/authThunk";
 
 const Register = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [data, setData] = useState({
     name: "",
@@ -28,7 +29,6 @@ const Register = () => {
       };
     });
   };
-  //   console.log(data);
 
   const validvalue = Object.values(data).every((el) => el);
 
@@ -39,10 +39,7 @@ const Register = () => {
       return;
     }
     try {
-      const response = await Axios({
-        ...SummaryApi.register,
-        data: data,
-      });
+      const response = await dispatch(registerAsync(data));
 
       if (response.data.error) {
         toast.error(response.data.message);

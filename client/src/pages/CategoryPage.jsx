@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import UploadCategory from "../components/UploadCategory";
 import Loading from "../components/Loading";
 import NoData from "../components/NoData";
+import Axios from "../utils/axios";
+import SummaryApi from "../common/api/SummaryApi";
 
 const CategoryPage = () => {
   const [openUpload, setOpenUpload] = useState(false);
@@ -19,7 +21,14 @@ const CategoryPage = () => {
   const fetchCategory = async () => {
     try {
       setLoading(true);
+      const response = await Axios({
+        ...SummaryApi.getCategory,
+      });
 
+      const { data: responseData } = response;
+      if (responseData.sucess) {
+        setCategoryData(responseData.data);
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -43,37 +52,18 @@ const CategoryPage = () => {
         </button>
       </div>
 
-      {!categoryData[0] && !loading && (<NoData />)}
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+      {!categoryData[0] && !loading && <NoData />}
+      {categoryData.map((category, index) => {
+        return (
+          <div className="w-44 object-scale-down overflow-hiden" key={index}>
+            <img
+              // alt={category.name}          
+              src={category.image}
+              className="w-52"
+            />
+          </div>
+        );
+      })}
 
       {loading && <Loading />}
 

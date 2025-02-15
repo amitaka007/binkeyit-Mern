@@ -7,7 +7,7 @@ import Divider from "./Divider";
 // import { logout } from "../store/slices/userSlice";
 import AxiosToastError from "../utils/AxiosToastError";
 import { HiExternalLink } from "react-icons/hi";
-import { userlogout } from "../store/thunk/auth/authThunk";
+import { logoutAsync } from "../store/thunk/auth/authThunk";
 
 const UserMenu = ({ close }) => {
   const user = useSelector((state) => state?.authSlice?.userDetails);
@@ -29,7 +29,7 @@ const UserMenu = ({ close }) => {
       //   navigate("/");
       // }
 
-       await dispatch(userlogout());
+       await dispatch(logoutAsync());
       
 
       navigate("/");

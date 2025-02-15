@@ -9,6 +9,10 @@ const SummaryApi = {
   //   url: `${baseUrl}/api/user/login`,
   //   method: "POST",
   // },
+  // logout: {
+  //   url: `${baseUrl}/api/user/logout`,
+  //   method: "GET",
+  // },
   forgot_Password: {
     url: `${baseUrl}/api/user/forgot-password`,
     method: "PUT",
@@ -24,13 +28,9 @@ const SummaryApi = {
   refreshToken: {
     url: `${baseUrl}/api/user/refresh-token`,
     method: "POST",
-  },
+  }, 
   userDetails: {
     url: `${baseUrl}/api/user/user-details`,
-    method: "GET",
-  },
-  logout: {
-    url: `${baseUrl}/api/user/logout`,
     method: "GET",
   },
   uploadAvatar: {
@@ -49,10 +49,10 @@ const SummaryApi = {
     url: `${baseUrl}/api/category/add-category`,
     method: "POST",
   },
-  getCategory: {
-    url: `${baseUrl}/api/category/get`,
-    method: "GET",
-  },
+  // getCategory: {
+  //   url: `${baseUrl}/api/category/get`,
+  //   method: "GET",
+  // },
 };
 
 export default SummaryApi;
