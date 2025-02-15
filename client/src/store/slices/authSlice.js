@@ -20,7 +20,6 @@ const initialState = {
   orderHistory: [],
   role: "",
   loading: false,
-  error: null,
   userDetails: null,
   errors: null,
   successMessage: null,
@@ -77,7 +76,7 @@ const authSlice = createSlice({
         state.userDetails = action.payload; 
         toast.success("Registered in successfully.");
       })
-      .addCase(registerAsync.rejected, (state, action) => {
+      .addCase(registerAsync.rejected, (state, action) => {   
         state.status = "rejected";
         state.userDetails = null;
         state.errors = action.error;
