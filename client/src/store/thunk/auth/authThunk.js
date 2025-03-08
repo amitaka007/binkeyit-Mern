@@ -44,7 +44,7 @@ export const forgotPaswordAsync = createAsyncThunk(
   "auth/forgotPaswordAsync",
   async (data, thunkAPI) => {
     try {
-      const response = await forgot_Password(data);
+      const response = await forgot_Password(data); 
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -55,7 +55,7 @@ export const forgotPasswordOtp_Async = createAsyncThunk(
   "auth/forgotPasswordOtp_Async",
   async (data, thunkAPI) => {
     try {
-      const response = await forgot_Password_Otp(data);
+      const response = await forgot_Password_Otp(data); 
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

@@ -40,6 +40,7 @@ const Register = () => {
     }
     try {
       const response = await dispatch(registerAsync(data));
+      console.log(response, "registerAsync");
 
       if (response.data.error) {
         toast.error(response.data.message);

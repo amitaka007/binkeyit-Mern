@@ -1,12 +1,13 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import Axios from "../utils/axios";
-import SummaryApi from "../common/api/SummaryApi";
 import AxiosToastError from "../utils/AxiosToastError";
 import { useNavigate, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { forgotPaswordAsync } from "../store/thunk/auth/authThunk";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [data, setData] = useState({
     email: "",
@@ -27,16 +28,13 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await Axios({
-        ...SummaryApi.forgot_Password,
-        data: data,
-      });
+      const response = await dispatch(forgotPaswordAsync(data)); 
 
-      if (response.data.error) {
-        toast.error(response.data.message);
+      if (response.payload.error) {
+        toast.error(response.payload.message);
       }
-      if (response.data.success) {
-        toast.success(response.data.message);
+      if (response.payload.success) {
+        toast.success(response.payload.message);
         navigate("/verification-otp", {
           state: {
             email: data.email,

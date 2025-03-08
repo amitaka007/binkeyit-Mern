@@ -14,8 +14,9 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [openUserMenu, setOpenUserMenu] = useState(false);
-  const user = useSelector((state) => state?.authSlice?.userDetails);
+  const user = useSelector((state) => state?.authSlice.userDetails); 
 
+  console.log(user, "useruseruser");
   const isSearchpage = () => {
     return location.pathname === "/search";
   };
@@ -80,7 +81,7 @@ const Header = () => {
 
             {/* user icon displayin Desktop version */}
             <div className="hidden lg:flex gap-10 items-center ">
-              {user !== null ? (
+              {user?.role=== 'USER' ? (
                 <div className="relative">
                   <div
                     onClick={() => setOpenUserMenu((prev) => !prev)}
